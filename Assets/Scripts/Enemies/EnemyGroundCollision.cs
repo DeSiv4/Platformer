@@ -1,0 +1,34 @@
+using UnityEngine;
+
+public class EnemyGrounCollision : MonoBehaviour
+{
+
+    EnemyController Parent;
+
+    void Awake()
+    {
+        Parent = GetComponentInParent<EnemyController>();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Parent.IsGrounded = true;
+            Parent.AllowRun = true;
+            //Debug.Log("OnGround");
+        }
+    }
+}
